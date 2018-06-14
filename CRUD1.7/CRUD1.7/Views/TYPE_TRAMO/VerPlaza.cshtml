@@ -1,0 +1,70 @@
+﻿@model CRUD1._7.Models.ModeloVirtual
+@{
+    ViewBag.Title = "Plazas";
+}
+@using (Ajax.BeginForm("VerPlazas", "TYPE_TRAMO", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divresultado2" }))
+{
+
+
+    if (Model.Plazas != null && Model.Plazas.Any())
+    {
+        <p>
+            @Html.ActionLink("Crear nueva plaza", "CreatePlaza", null, new { @class = "btn btn-success" })
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plazas.FirstOrDefault().idenPlaza)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plazas.FirstOrDefault().idPlaza)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Plazas.FirstOrDefault().nomPlaza)
+                </th>
+                <th></th>
+            </tr>
+
+            @if (Model.Plazas != null && Model.Plazas.Any())
+            {
+
+                foreach (var item in Model.Plazas)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idenPlaza)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.idPlaza)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nomPlaza)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Editar", "EditPlaza", new { id = item.idenPlaza }, new { @class = "btn btn-primary" }) |
+                            @Html.ActionLink("Detalles", "DetailsPlaza", new { id = item.idenPlaza }, new { @class = "btn btn-info" }) |
+                            @Html.ActionLink("Borrar", "DeletePlaza", new { id = item.idenPlaza }, new { @class = "btn btn-danger" }) |
+                            @Html.ActionLink("Ver Carriles", "VerCarriles", new { id = item.idenPlaza }, new { @class = "btn btn-warning" })
+                        </td>
+                    </tr>
+                }
+            }
+
+
+        </table>
+        @Html.ActionLink("Regresar a tramos", "Index",null, new { @class = "btn btn-warning" });
+
+        <div id="divResultado2">
+            @Html.Partial("VerCarriles", Model)
+        </div>
+    }
+    else if(Model.Plazas.Count == 0 && Model.Tramos.Count == 1)
+    {
+        <p>
+            Este tramo aún no tiene plazas registradas... ¿Quiere agregarlas?
+            @Html.ActionLink("Crear nueva plaza", "CreatePlaza", null, new { @class = "btn btn-success" })
+        </p>
+
+    }
+    
+}

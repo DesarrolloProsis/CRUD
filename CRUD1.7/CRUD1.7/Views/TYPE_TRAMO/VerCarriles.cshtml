@@ -1,0 +1,66 @@
+﻿@model CRUD1._7.Models.ModeloVirtual
+
+@if (Model.Carriles != null && Model.Carriles.Any())
+{
+<div>
+    <br />
+</div>
+<p>
+    @Html.ActionLink("Crear nuevo carril", "CreateCarril", null, new { @class = "btn btn-success" })
+</p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Carriles.FirstOrDefault().idenCarril)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carriles.FirstOrDefault().idCarril)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carriles.FirstOrDefault().numCarril)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Carriles.FirstOrDefault().numTramo)
+            </th>
+            <th></th>
+        </tr>
+        @if (Model.Carriles != null && Model.Carriles.Any())
+        {
+            foreach (var item in Model.Carriles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idenCarril)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idCarril)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numCarril)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.numTramo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "EditCarril", new { id = item.idenCarril }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Detalles", "DetailsCarril", new { id = item.idenCarril }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Eliminar", "DeleteCarril", new { id = item.idenCarril }, new { @class = "btn btn-danger" })
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+}
+else if (Model.Plazas.Count == 1 && Model.Carriles.Count == 0 && Model.Tramos.Count == 1)
+{
+    <p>
+        Esta plaza aún no tiene carriles registrados... ¿Quiere agregarlas?
+        @Html.ActionLink("Crear nuevo carril", "CreateCarril", null, new { @class = "btn btn-success" })
+    </p>
+    <p>
+        @Html.ActionLink("Regresar a plazas", "VerPlaza", new { id = Model.Tramos.FirstOrDefault().idenTramo}, new { @class = "btn btn-warning" });
+    </p>
+
+}

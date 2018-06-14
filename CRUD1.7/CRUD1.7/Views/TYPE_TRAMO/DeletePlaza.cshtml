@@ -1,0 +1,48 @@
+﻿@model CRUD1._7.Models.TYPE_PLAZA
+
+@{
+    ViewBag.Title = "DeletePlaza";
+}
+
+<h2>DeletePlaza</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TYPE_PLAZA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE_TRAMO.idTramo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE_TRAMO.idTramo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idPlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idPlaza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomPlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomPlaza)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

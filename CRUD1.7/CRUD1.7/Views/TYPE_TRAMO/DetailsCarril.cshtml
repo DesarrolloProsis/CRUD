@@ -1,0 +1,50 @@
+﻿@model CRUD1._7.Models.TYPE_CARRIL
+
+@{
+    ViewBag.Title = "DetailsCarril";
+}
+
+<h2>DetailsCarril</h2>
+
+<div>
+    <h4>TYPE_CARRIL</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE_PLAZA.idPlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE_PLAZA.idPlaza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idCarril)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idCarril)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numCarril)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numCarril)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numTramo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numTramo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idenCarril }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

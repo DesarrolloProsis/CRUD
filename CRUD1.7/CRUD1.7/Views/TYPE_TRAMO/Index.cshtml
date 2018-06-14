@@ -1,0 +1,63 @@
+﻿@model CRUD1._7.Models.ModeloVirtual
+
+@{
+    ViewBag.Title = "Tramos";
+}
+@using (Ajax.BeginForm("Index", "TYPE_TRAMO", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divresultado" }))
+{
+    <h2>Tramos</h2>
+    <br />
+    <p>
+
+    </p>
+    if (Model.Tramos != null && Model.Tramos.Any())
+    {
+        @Html.ActionLink("Crear nuevo tramo", "Create", null, new { @class = "btn btn-success" })
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tramos.FirstOrDefault().idenTramo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tramos.FirstOrDefault().idTramo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tramos.FirstOrDefault().idTramo)
+                </th>
+            </tr>
+
+            @foreach (var item in Model.Tramos)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idenTramo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.idTramo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nomTramo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.idenTramo }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.idenTramo }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.idenTramo }, new { @class = "btn btn-danger" }) |
+                        @Html.ActionLink("Ver Plaza", "VerPlaza", new { id = item.idenTramo }, new { @class = "btn btn-warning" })
+                    </td>
+                </tr>
+            }
+            }
+        </table>
+        <div id="divResultado">
+            @Html.Partial("VerPlaza", Model)
+        </div>
+    }
+    else if (Model.Tramos.Count == 0)
+    {
+        <p>
+            Aún no hay tramos registrados... ¿Quiere agregarlos?
+            @Html.ActionLink("Crear nueva tramo", "Create", null, new { @class = "btn btn-success" })
+        </p>
+    }
+}
+

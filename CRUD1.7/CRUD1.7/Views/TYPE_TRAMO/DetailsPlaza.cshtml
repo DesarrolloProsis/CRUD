@@ -1,0 +1,42 @@
+﻿@model CRUD1._7.Models.TYPE_PLAZA
+
+@{
+    ViewBag.Title = "DetailsPlaza";
+}
+
+<h2>DetailsPlaza</h2>
+
+<div>
+    <h4>TYPE_PLAZA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TYPE_TRAMO.idTramo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TYPE_TRAMO.idTramo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idPlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idPlaza)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nomPlaza)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nomPlaza)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditPlaza", new { id = Model.idenPlaza }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
